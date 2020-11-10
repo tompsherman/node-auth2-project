@@ -5,6 +5,7 @@ const cors = require('cors')
 const bcrypt = require('bcryptjs')
 require('colors')
 
+const authRouter = require('./auth/authRouter')
 const userRouter = require('./users/userRouter')
 
 const server = express()
@@ -14,6 +15,7 @@ server.use(morgan('dev'))
 server.use(cors())
 server.use(express.json())
 
+server.use('/auth', authRouter)
 server.use('/api/users', userRouter)
 
 module.exports = server
